@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Game } from "@/data/games";
+import { withBasePath } from "@/lib/basePath";
 
 function ArrowIcon() {
   return (
@@ -32,7 +33,7 @@ export function GameCard({ game }: { game: Game }) {
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-zinc-950">
         <Image
-          src={game.image}
+          src={withBasePath(game.image)}
           alt={`${game.title} cover art`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
