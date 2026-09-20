@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { GameCard } from "./components/GameCard";
 import { games } from "@/data/games";
+import { withBasePath } from "@/lib/basePath";
 
 function GhostLogo() {
   return (
@@ -48,17 +50,34 @@ export default function Home() {
       </header>
 
       {/* ── Hero ────────────────────────────────────────── */}
-      <section className="relative overflow-hidden">
+      <section className="relative min-h-[calc(100vh-64px)] overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={withBasePath(featured.image)}
+            alt={`${featured.title} poster`}
+            fill
+            priority
+            className="scale-[1.12] object-cover opacity-30"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.18),_transparent_40%),linear-gradient(90deg,_rgba(9,9,11,0.92)_0%,_rgba(9,9,11,0.7)_44%,_rgba(9,9,11,0.8)_100%)]" />
+        </div>
         <div className="bg-grid absolute inset-0" aria-hidden="true" />
         <div
           className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-emerald-500/15 blur-[120px]"
           aria-hidden="true"
         />
-        <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-16 pt-20 text-center sm:pt-28">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-zinc-300">
+        <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-6 pb-8 pt-12 text-center sm:pt-16">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-zinc-300 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
             Casual mini games. Free, instant, no installs
           </span>
+
+          <div className="mt-6 flex items-center gap-3 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200">
+            <span className="h-2 w-2 rounded-full bg-emerald-300" />
+            Featured game
+          </div>
+
           <h1 className="mt-6 max-w-3xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-7xl">
             Small games.
             <br />
@@ -66,10 +85,10 @@ export default function Home() {
               Instant fun.
             </span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-300">
             Stealth Games is a tiny arcade of casual browser games. Click a
             card, play for two minutes or lose track of an hour. Starting
-            with <span className="text-zinc-200">{featured.title}</span>.
+            with <span className="text-zinc-100">{featured.title}</span>.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
@@ -91,27 +110,13 @@ export default function Home() {
             </a>
             <a
               href="#games"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 text-sm font-semibold text-zinc-100 transition-colors hover:bg-white/10"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 text-sm font-semibold text-zinc-100 backdrop-blur-sm transition-colors hover:bg-white/10"
             >
               Browse the arcade
             </a>
           </div>
 
-          <dl className="mt-12 flex items-center gap-8 text-center sm:gap-12">
-            {[
-              [`${games.length}`, `live game${games.length === 1 ? "" : "s"}`],
-              ["0", "installs needed"],
-              ["∞", "quick breaks"],
-            ].map(([value, label]) => (
-              <div key={label}>
-                <dt className="sr-only">{label}</dt>
-                <dd className="text-2xl font-bold text-zinc-50">{value}</dd>
-                <dd className="mt-1 text-xs uppercase tracking-[0.16em] text-zinc-500">
-                  {label}
-                </dd>
-              </div>
-            ))}
-          </dl>
+
         </div>
       </section>
 
