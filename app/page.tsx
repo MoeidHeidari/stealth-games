@@ -39,12 +39,10 @@ export default function Home() {
             </a>
           </nav>
           <a
-            href={featured.url}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#games"
             className="rounded-full bg-emerald-400 px-4 py-2 text-sm font-semibold text-zinc-950 transition-colors hover:bg-emerald-300"
           >
-            Play {featured.title}
+            Play now
           </a>
         </div>
       </header>
