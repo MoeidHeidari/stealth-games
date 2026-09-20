@@ -136,23 +136,11 @@ export default function Home() {
             <GameCard key={game.slug} game={game} />
           ))}
 
-          {/* Coming soon slot, remove once you have more games */}
           <div className="flex min-h-[320px] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-zinc-800 bg-zinc-900/30 p-8 text-center">
             <span className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 bg-zinc-950 text-xl text-zinc-500">
               +
             </span>
             <h3 className="font-semibold text-zinc-300">More games incoming</h3>
-            <p className="max-w-[26ch] text-sm leading-relaxed text-zinc-500">
-              Drop a cover in{" "}
-              <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-emerald-200">
-                public/games/
-              </code>{" "}
-              and add it to{" "}
-              <code className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-xs text-emerald-200">
-                data/games.ts
-              </code>
-              .
-            </p>
           </div>
         </div>
       </main>
